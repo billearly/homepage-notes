@@ -10,7 +10,3 @@ export const NoteInput = styled.textarea`
 
   overflow: hidden;
 `;
-
-// Need to refresh
-// I think that this can be a 'dumb' component and the state will all be in the page
-// and I can probably use hooks there

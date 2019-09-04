@@ -1,17 +1,23 @@
 import { useState } from "react";
 
+const STORAGE_KEY = "NOTE";
+
 export const useNote = () => {
-  const [note, setNote] = useState("");
+  const initialValue = localStorage.getItem(STORAGE_KEY);
+  const [note, setNote] = useState(initialValue);
 
   const updateNote = e => {
     setNote(e.target.value);
   };
 
-  // have something for onSubmit that writes to local storage
+  const saveNote = () => {
+    localStorage.setItem(STORAGE_KEY, note);
+  }
 
   return [
     note,
     updateNote,
+    saveNote
   ];
 };
 

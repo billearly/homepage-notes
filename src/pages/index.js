@@ -5,11 +5,16 @@ import {
   NoteDisplay,
   Main
 } from "../components";
-import { useNote, useEditing } from "../utils/hooks";
+import { useNote, useEditing } from "../utils";
 
 export default () => {
-  const [note, updateNote] = useNote();
+  const [note, updateNote, saveNote] = useNote();
   const [isEditing, toggleEditing] = useEditing();
+
+  const handleSubmit = () => {
+    saveNote();
+    toggleEditing();
+  }
 
   return (
     <>
@@ -19,16 +24,17 @@ export default () => {
         <div>
           <h1>Homepage Notes</h1>
 
-          {isEditing ?
+          {isEditing ? (
             <NoteInput
               value={note}
               onChange={updateNote}
             />
-            :
-            <NoteDisplay>{note}</NoteDisplay>
+          ) : (
+              <NoteDisplay>{note}</NoteDisplay>
+            )
           }
         </div>
-        <button onClick={toggleEditing}>Toggle</button>
+        <button onClick={handleSubmit}>Save</button>
       </Main>
     </>
   );
