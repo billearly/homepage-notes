@@ -5,7 +5,7 @@ import {
   NoteDisplay,
   Main
 } from "../components";
-import { useNote, useEditing } from "../utils";
+import { useNote, useEditing } from "../hooks";
 
 export default () => {
   const [note, updateNote, saveNote] = useNote();

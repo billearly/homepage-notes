@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const STORAGE_KEY = "NOTE";
-
 export const useNote = () => {
+  const STORAGE_KEY = "NOTE";
+
   const initialValue = localStorage.getItem(STORAGE_KEY);
   const [note, setNote] = useState(initialValue);
 
@@ -20,16 +20,3 @@ export const useNote = () => {
     saveNote
   ];
 };
-
-export const useEditing = () => {
-  const [isEditing, setIsEditing] = useState(false);
-
-  const toggleEditing = () => {
-    setIsEditing(!isEditing);
-  }
-
-  return [
-    isEditing,
-    toggleEditing
-  ]
-}
