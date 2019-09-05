@@ -3,17 +3,33 @@ import {
   GlobalStyle,
   NoteInput,
   NoteDisplay,
-  Main
+  Main,
+  Container,
+  Button
 } from "../components";
 import { useNote, useEditing } from "../hooks";
 
 export default () => {
-  const [note, updateNote, saveNote] = useNote();
+  const [note, updateNote, saveNote, revertNote] = useNote();
   const [isEditing, toggleEditing] = useEditing();
 
-  const handleSubmit = () => {
+  const handleSave = () => {
     saveNote();
     toggleEditing();
+  }
+
+  const handleCancel = () => {
+    revertNote();
+    toggleEditing();
+  }
+
+  const handleKeyPress = e => {
+    const ENTER_KEY = 13;
+
+    if (e.which === ENTER_KEY && !e.shiftKey) {
+      saveNote();
+      toggleEditing();
+    }
   }
 
   return (
@@ -21,20 +37,26 @@ export default () => {
       <GlobalStyle />
 
       <Main>
-        <div>
+        <Container>
           <h1>Homepage Notes</h1>
 
           {isEditing ? (
-            <NoteInput
-              value={note}
-              onChange={updateNote}
-            />
+            <div>
+              <NoteInput
+                value={note}
+                onChange={updateNote}
+                onKeyPress={handleKeyPress}
+              />
+              <Button onClick={handleSave}>Save</Button>
+              <Button onClick={handleCancel}>Cancel</Button>
+            </div>
           ) : (
-              <NoteDisplay>{note}</NoteDisplay>
+              <NoteDisplay
+                onClick={toggleEditing} // This also needs to give focus, use ref
+              >{note}</NoteDisplay>
             )
           }
-        </div>
-        <button onClick={handleSubmit}>Save</button>
+        </Container>
       </Main>
     </>
   );
