@@ -7,6 +7,11 @@ export const Button = styled.button`
   color: #8fceeb;
   cursor: pointer;
   font-weight: bold;
-  margin: 0 1rem;
+  margin-left: 1rem;
   padding: 0.75rem 1.5rem;
+`;
+
+export const ButtonOutline = styled(Button)`
+  background-color: transparent;
+  color: white;
 `;
