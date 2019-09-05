@@ -13,8 +13,4 @@ export const NoteInput = styled.textarea`
   padding: 0.75rem;
   resize: none;
   width: 20rem;
-
-  &:focus {
-    outline: none;
-  }
 `;

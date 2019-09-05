@@ -5,24 +5,31 @@ export const useNote = () => {
 
   const initialValue = localStorage.getItem(STORAGE_KEY) || "";
   const [note, setNote] = useState(initialValue);
+  const [isSaved, setSaved] = useState(true);
 
   const updateNote = e => {
     setNote(e.target.value);
+
+    // check if current note is equal to saved note, that way if someone types in the same thing they won't need to save again
+    setSaved(false);
   };
 
   const saveNote = () => {
     localStorage.setItem(STORAGE_KEY, note);
+    setSaved(true);
   }
 
   const revertNote = () => {
     const storedNote = localStorage.getItem(STORAGE_KEY) || "";
     setNote(storedNote);
+    setSaved(true);
   }
 
   return [
     note,
     updateNote,
     saveNote,
-    revertNote
+    revertNote,
+    isSaved
   ];
 };
