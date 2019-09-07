@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const useNote = () => {
   const STORAGE_KEY = "NOTE";
   const MAX_LENGTH = 150;
+  let initialValue = "";
 
-  const initialValue = localStorage.getItem(STORAGE_KEY) || "";
+  if (typeof localStorage !== 'undefined') {
+    initialValue = localStorage.getItem(STORAGE_KEY);
+  }
+
   const [note, setNote] = useState(initialValue);
   const [isSaved, setSaved] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
@@ -21,12 +25,20 @@ export const useNote = () => {
       return;
     }
 
-    localStorage.setItem(STORAGE_KEY, note);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(STORAGE_KEY, note);
+    }
+
     setSaved(true);
   }
 
   const revertNote = () => {
-    const storedNote = localStorage.getItem(STORAGE_KEY) || "";
+    let storedNote = "";
+
+    if (typeof localStorage !== 'undefined') {
+      storedNote = localStorage.getItem(STORAGE_KEY);
+    }
+
     setNote(storedNote);
     setSaved(true);
   }
