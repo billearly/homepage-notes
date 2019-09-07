@@ -9,7 +9,6 @@ export const NoteInput = styled.textarea`
   font-family: Arial, sans-serif;
   font-size: 1rem;
   height: 12rem;
-  overflow: hidden;
   padding: 0.75rem;
   resize: none;
   width: 100%;

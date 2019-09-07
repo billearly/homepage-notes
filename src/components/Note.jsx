@@ -21,16 +21,6 @@ export const Note = () => {
     setIsEditing
   ] = useNote();
 
-  const handleKeyPress = e => {
-    const ENTER_KEY = 13;
-
-    // Do I actually want this behaviour? Twitter doesn't post on enter, and neither does facebook
-    if (e.which === ENTER_KEY && !e.shiftKey) {
-      e.preventDefault();
-      saveNote();
-    }
-  }
-
   const handleFocus = () => {
     setIsEditing(true);
   }
@@ -48,7 +38,6 @@ export const Note = () => {
       <NoteInput
         value={note}
         onChange={updateNote}
-        onKeyPress={handleKeyPress}
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
