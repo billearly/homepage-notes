@@ -18,7 +18,7 @@ export default () => {
 
       <Main>
         <Container>
-          <Header>Homepage Notes</Header>
+          <Header>Homepage Note</Header>
           <Note />
         </Container>
       </Main>

@@ -6,3 +6,4 @@ export { Main } from "./Main";
 export { Container } from "./Container";
 export { Button, ButtonOutline } from "./Button";
 export { ButtonRow } from "./ButtonRow";
+export { Status } from "./Status";

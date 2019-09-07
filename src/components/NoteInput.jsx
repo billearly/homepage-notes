@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NoteInput = styled.textarea`
   background-color: #a5daf2;
-  border: 0.1rem solid white;
+  border: 0.1rem solid transparent;
   border-radius: 0.2rem;
   color: white;
   display: block;
@@ -12,5 +12,10 @@ export const NoteInput = styled.textarea`
   overflow: hidden;
   padding: 0.75rem;
   resize: none;
-  width: 20rem;
+  width: 100%;
+
+  &:focus {
+    border: 0.1rem solid white;
+    outline: none;
+  }
 `;

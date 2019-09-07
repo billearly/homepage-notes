@@ -2,10 +2,12 @@ import { useState } from "react";
 
 export const useNote = () => {
   const STORAGE_KEY = "NOTE";
+  const MAX_LENGTH = 250;
 
   const initialValue = localStorage.getItem(STORAGE_KEY) || "";
   const [note, setNote] = useState(initialValue);
   const [isSaved, setSaved] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
 
   const updateNote = e => {
     setNote(e.target.value);
@@ -15,6 +17,10 @@ export const useNote = () => {
   };
 
   const saveNote = () => {
+    if (note.length > MAX_LENGTH) {
+      return;
+    }
+
     localStorage.setItem(STORAGE_KEY, note);
     setSaved(true);
   }
@@ -30,6 +36,9 @@ export const useNote = () => {
     updateNote,
     saveNote,
     revertNote,
-    isSaved
+    isSaved,
+    MAX_LENGTH,
+    isEditing,
+    setIsEditing
   ];
 };
