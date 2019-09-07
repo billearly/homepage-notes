@@ -6,20 +6,26 @@ export const useNote = () => {
 
   const [inBrowser, setInBrowser] = useState(false);
   const [note, setNote] = useState("");
+  const [storedNote, setStoredNote] = useState("");
   const [isSaved, setSaved] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
 
+  // Initial setup
   useEffect(() => {
     setInBrowser(true);
-    setNote(localStorage.getItem(STORAGE_KEY) || "");
+
+    const storedValue = localStorage.getItem(STORAGE_KEY) || "";
+    setNote(storedValue);
+    setStoredNote(storedValue);
   }, []);
+
+  // Note comparison
+  useEffect(() => {
+    setSaved(note === storedNote);
+  }, [note, storedNote]);
 
   const updateNote = e => {
     setNote(e.target.value);
-
-    // check if current note is equal to saved note
-    // that way if someone types in the same thing they won't need to save again
-    setSaved(false);
   };
 
   const saveNote = () => {
@@ -31,18 +37,11 @@ export const useNote = () => {
       localStorage.setItem(STORAGE_KEY, note);
     }
 
-    setSaved(true);
+    setStoredNote(note);
   }
 
   const revertNote = () => {
-    let storedNote = "";
-
-    if (inBrowser) {
-      storedNote = localStorage.getItem(STORAGE_KEY) || "";
-    }
-
     setNote(storedNote);
-    setSaved(true);
   }
 
   return [
