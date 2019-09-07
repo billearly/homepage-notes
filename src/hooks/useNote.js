@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export const useNote = () => {
   const STORAGE_KEY = "NOTE";
@@ -6,7 +6,7 @@ export const useNote = () => {
   let initialValue = "";
 
   if (typeof localStorage !== 'undefined') {
-    initialValue = localStorage.getItem(STORAGE_KEY);
+    initialValue = localStorage.getItem(STORAGE_KEY) || "";
   }
 
   const [note, setNote] = useState(initialValue);
@@ -36,7 +36,7 @@ export const useNote = () => {
     let storedNote = "";
 
     if (typeof localStorage !== 'undefined') {
-      storedNote = localStorage.getItem(STORAGE_KEY);
+      storedNote = localStorage.getItem(STORAGE_KEY) || "";
     }
 
     setNote(storedNote);
