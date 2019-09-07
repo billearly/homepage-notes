@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export const useNote = () => {
   const STORAGE_KEY = "NOTE";
-  const MAX_LENGTH = 250;
+  const MAX_LENGTH = 150;
 
   const initialValue = localStorage.getItem(STORAGE_KEY) || "";
   const [note, setNote] = useState(initialValue);
