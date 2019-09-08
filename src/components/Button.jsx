@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const Button = styled.button`
   background-color: white;
-  border: 0.1rem solid white;
-  border-radius: 0.2rem;
-  color: #8fceeb;
+  border: ${props => props.theme.border};
+  border-radius: ${props => props.theme.borderRadius};
+  color: ${props => props.theme.colorBlueLight};
   cursor: pointer;
   font-weight: bold;
-  margin-left: 1rem;
-  padding: 0.75rem 1.5rem;
+  margin-left: ${props => props.theme.paddingX2};
+  padding: ${props => props.theme.padding} ${props => props.theme.paddingX2};
 `;
 
 export const ButtonOutline = styled(Button)`

@@ -40,6 +40,7 @@ export const Note = () => {
         onChange={updateNote}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        placeholder="Write a note to yourself..."
       />
 
       {(!isSaved || isEditing) &&
