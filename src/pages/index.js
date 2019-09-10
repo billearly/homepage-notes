@@ -14,7 +14,7 @@ export default () => {
     <Layout>
       <>
         <Helmet>
-          <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet" />
         </Helmet>
 
         <GlobalStyle />

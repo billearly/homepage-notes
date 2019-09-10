@@ -7,4 +7,8 @@ export const Container = styled.div`
   margin: 0 auto;
   padding-top: 10rem;
   width: 20rem;
+
+  @media screen and (max-width: ${props => props.theme.breakpointSmall}){
+    padding-top: 0;
+  }
 `;
