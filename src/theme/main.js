@@ -1,4 +1,5 @@
 export const main = {
+  animationSpeed: "1s",
   border: "0.1rem solid white",
   borderRadius: "0.2rem",
   colorBlueDark: "#8fceeb",

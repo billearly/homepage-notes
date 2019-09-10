@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   ButtonOutline,
@@ -10,6 +10,8 @@ import { useNote } from "../hooks";
 
 export const Note = () => {
   // Refactor this into an object
+  // Thinking that I don't really need the hook since the logic isn't shared
+  // But it is nice that its in a separate file
   const [
     note,
     updateNote,
@@ -20,6 +22,12 @@ export const Note = () => {
     isEditing,
     setIsEditing
   ] = useNote();
+
+  const [isDisplayed, setIsDisplayed] = useState(false);
+
+  useEffect(() => {
+    setIsDisplayed(true);
+  }, []);
 
   const handleFocus = () => {
     setIsEditing(true);
@@ -41,6 +49,7 @@ export const Note = () => {
         onFocus={handleFocus}
         onBlur={handleBlur}
         placeholder="Write a note to yourself..."
+        isDisplayed={isDisplayed}
       />
 
       {(!isSaved || isEditing) &&
