@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const NoteInput = styled.textarea`
-  background-color: ${props => props.theme.colorBlueDark};
+  background-color: ${props => props.theme.colorGrayLight};
   border: ${props => props.theme.border};
-  border-color: transparent;
+  border-color: ${props => props.theme.colorGrayDark};
   border-radius: ${props => props.theme.borderRadius};
-  color: white;
+  color: ${props => props.theme.colorGrayDark};
   display: block;
   font-family: Arial, sans-serif;
   font-size: 1rem;
@@ -17,11 +17,6 @@ export const NoteInput = styled.textarea`
   width: 100%;
 
   ::placeholder {
-    color: #ffffffa6;
-  }
-
-  &:focus {
-    border: ${props => props.theme.border};
-    outline: none;
+    color: ${props => props.theme.colorGrayDark};;
   }
 `;

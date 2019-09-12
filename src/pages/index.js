@@ -4,6 +4,7 @@ import {
   Header,
   Note,
   Main,
+  Footer,
   Container
 } from "../components";
 import { Helmet } from "react-helmet";
@@ -24,6 +25,11 @@ export default () => {
             <Header>Homepage Note</Header>
             <Note />
           </Container>
+
+          <Footer
+            link="https://github.com/billearly/homepage-notes"
+            linkText="GitHub"
+          />
         </Main>
       </>
     </Layout>

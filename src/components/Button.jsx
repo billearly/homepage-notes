@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  background-color: white;
+  background-color: ${props => props.theme.colorGrayDark};;
   border: ${props => props.theme.border};
+  border-color: ${props => props.theme.colorGrayDark};
   border-radius: ${props => props.theme.borderRadius};
-  color: ${props => props.theme.colorBlueLight};
+  color: ${props => props.theme.colorGrayLight};
   cursor: pointer;
   font-weight: bold;
   margin-left: ${props => props.theme.paddingX2};
@@ -13,5 +14,5 @@ export const Button = styled.button`
 
 export const ButtonOutline = styled(Button)`
   background-color: transparent;
-  color: white;
+  color: ${props => props.theme.colorGrayDark};
 `;
