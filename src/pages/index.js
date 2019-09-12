@@ -15,6 +15,7 @@ export default () => {
     <Layout>
       <>
         <Helmet>
+          <title>Homepage Note</title>
           <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet" />
         </Helmet>
 
