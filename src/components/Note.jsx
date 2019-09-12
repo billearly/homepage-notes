@@ -18,7 +18,6 @@ export const Note = ({ placeholder }) => {
     saveNote,
     revertNote,
     isSaved,
-    MAX_LENGTH,
     isEditing,
     setIsEditing
   ] = useNote();
@@ -38,7 +37,7 @@ export const Note = ({ placeholder }) => {
   }
 
   const getFillPercentage = () => {
-    return note.length / MAX_LENGTH * 100;
+    return note.length / process.env.GATSBY_MAX_LENGTH * 100;
   }
 
   return (

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 export const useNote = () => {
   const STORAGE_KEY = "NOTE";
-  const MAX_LENGTH = 150;
 
   const [inBrowser, setInBrowser] = useState(false);
   const [note, setNote] = useState("");
@@ -29,7 +28,7 @@ export const useNote = () => {
   };
 
   const saveNote = () => {
-    if (note.length > MAX_LENGTH) {
+    if (note.length > process.env.GATSBY_MAX_LENGTH) {
       return;
     }
 
@@ -50,7 +49,6 @@ export const useNote = () => {
     saveNote,
     revertNote,
     isSaved,
-    MAX_LENGTH,
     isEditing,
     setIsEditing
   ];
