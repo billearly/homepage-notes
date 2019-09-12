@@ -13,8 +13,9 @@ const StatusContainer = styled.div`
 const StatusBar = styled.div`
   background-color: ${props => getFillColor(props.percentage, props.theme.colorGrayDark, props.theme.colorOrange, props.theme.colorRed)};
   height: 100%;
-  width: ${props => props.percentage}%;
   max-width: 100%;
+  transition: width ${props => props.theme.animationSpeedFast};
+  width: ${props => props.percentage}%;
 `;
 
 const getFillColor = (percentage, baseColor, warningColor, limitColor) => {

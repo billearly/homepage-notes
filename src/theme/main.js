@@ -1,5 +1,6 @@
 export const main = {
   animationSpeed: "1s",
+  animationSpeedFast: "0.2s",
   border: "0.1rem solid",
   borderRadius: "0.2rem",
   breakpointSmall: "30rem",
