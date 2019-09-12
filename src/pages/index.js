@@ -21,17 +21,19 @@ export default () => {
 
         <GlobalStyle />
 
-        <Main>
-          <Container>
+        <Container>
+          <Main>
             <Header>Homepage Note</Header>
-            <Note />
-          </Container>
+            <Note
+              placeholder="Write a note to yourself..."
+            />
+          </Main>
 
           <Footer
             link="https://github.com/billearly/homepage-notes"
             linkText="GitHub"
           />
-        </Main>
+        </Container>
       </>
     </Layout>
   );

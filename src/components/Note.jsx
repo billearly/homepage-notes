@@ -8,7 +8,7 @@ import {
 } from "./";
 import { useNote } from "../hooks";
 
-export const Note = () => {
+export const Note = ({ placeholder }) => {
   // Refactor this into an object
   // Thinking that I don't really need the hook since the logic isn't shared
   // But it is nice that its in a separate file
@@ -48,7 +48,7 @@ export const Note = () => {
         onChange={updateNote}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        placeholder="Write a note to yourself..."
+        placeholder={placeholder}
         isDisplayed={isDisplayed}
       />
 

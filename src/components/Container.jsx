@@ -1,14 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  padding-top: 10rem;
-  width: 20rem;
-
-  @media screen and (max-width: ${props => props.theme.breakpointSmall}){
-    padding-top: 0;
-  }
+  background-color: ${props => props.theme.colorGrayLight};
+  color: ${props => props.theme.colorGrayDark};
+  height: 100%;
+  min-height: 100vh;
+  position: relative;
 `;
