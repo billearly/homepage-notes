@@ -2,6 +2,7 @@ export { GlobalStyle } from "./GlobalStyle";
 export { Header } from "./Header";
 export { NoteInput } from "./NoteInput";
 export { Note } from "./Note";
+export { InvisLabel } from "./InvisLabel";
 export { Main } from "./Main";
 export { Container } from "./Container";
 export { Button, ButtonOutline } from "./Button";

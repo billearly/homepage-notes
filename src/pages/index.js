@@ -14,8 +14,13 @@ export default () => {
   return (
     <Layout>
       <>
-        <Helmet>
+        <Helmet
+          htmlAttributes={{
+            lang: "en"
+          }}
+        >
           <title>Homepage Note</title>
+          <meta name="Description" content="Write little notes to yourself" />
           <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet" />
         </Helmet>
 

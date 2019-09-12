@@ -4,6 +4,7 @@ import {
   ButtonOutline,
   ButtonRow,
   NoteInput,
+  InvisLabel,
   Status
 } from "./";
 import { useNote } from "../hooks";
@@ -42,7 +43,12 @@ export const Note = ({ placeholder }) => {
 
   return (
     <>
+      <InvisLabel htmlFor="note-input">
+        Note:
+      </InvisLabel>
+
       <NoteInput
+        id="note-input"
         value={note}
         onChange={updateNote}
         onFocus={handleFocus}
