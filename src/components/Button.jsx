@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  background-color: ${props => props.theme.colorGrayDark};;
+  background-color: ${props => props.theme.colorBlueDark};
   border: ${props => props.theme.border};
-  border-color: ${props => props.theme.colorGrayDark};
+  border-color: ${props => props.theme.colorBlueDark};
   border-radius: ${props => props.theme.borderRadius};
   color: ${props => props.theme.colorGrayLight};
   cursor: pointer;
@@ -14,5 +14,5 @@ export const Button = styled.button`
 
 export const ButtonOutline = styled(Button)`
   background-color: transparent;
-  color: ${props => props.theme.colorGrayDark};
+  color: ${props => props.theme.colorBlueDark};
 `;

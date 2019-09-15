@@ -1,8 +1,30 @@
+import React from "react";
 import styled from "styled-components";
 
-export const Header = styled.h1`
+const HeaderBar = styled.header`
+  background-color: ${props => props.theme.colorBlueDark};
+  color: white;
   font-family: 'Satisfy', cursive;
-  font-size: 3rem;
-  font-weight: normal;
-  margin: 2rem 0;
+
+  p {
+    font-size: 2rem;
+  }
 `;
+
+const HeaderContent = styled.div`
+  margin: 0 auto;
+  max-width: 20rem;
+  padding: ${props => props.theme.padding} ${props => props.theme.paddingX2};
+
+  @media screen and (max-width: ${props => props.theme.breakpointSmall}) {
+    margin: none;
+    max-width: none;
+  }
+`;
+
+export const Header = ({ name }) =>
+  <HeaderBar>
+    <HeaderContent>
+      <p>{name}</p>
+    </HeaderContent>
+  </HeaderBar>

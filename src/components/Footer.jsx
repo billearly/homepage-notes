@@ -1,30 +1,35 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+const FooterContainer = styled.div`
+  background-color: ${props => props.theme.colorBlueDark};
+  bottom: 0;
+  color: white;
+  font-size: 0.75rem;
+  position: absolute;
+  width: 100%;
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
 const FooterItems = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
   max-width: 20rem;
-  padding: ${props => props.theme.padding} 0;
-`;
+  padding: ${props => props.theme.padding} ${props => props.theme.paddingX2};
 
-export const FooterContainer = styled.div`
-  background-color: ${props => props.theme.colorGrayDark};
-  bottom: 0;
-  color: ${props => props.theme.colorGrayLight};
-  font-size: 0.75rem;
-  position: absolute;
-  width: 100%;
-
-  a {
-    color: ${props => props.theme.colorGrayLight};
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
+  @media screen and (max-width: ${props => props.theme.breakpointSmall}) {
+    margin: none;
+    max-width: none;
   }
 `;
 

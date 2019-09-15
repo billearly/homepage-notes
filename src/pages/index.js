@@ -19,18 +19,21 @@ export default () => {
             lang: "en"
           }}
         >
-          <title>Homepage Note</title>
-          <meta name="Description" content="Write little notes to yourself" />
+          <title>Jot</title>
+          <meta name="Description" content="Jot down little notes to yourself" />
           <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet" />
         </Helmet>
 
         <GlobalStyle />
 
         <Container>
+          <Header
+            name="Jot"
+          />
+
           <Main>
-            <Header>Homepage Note</Header>
             <Note
-              placeholder="Write a note to yourself..."
+              label="Jot down a note..."
             />
           </Main>
 

@@ -4,12 +4,12 @@ import {
   ButtonOutline,
   ButtonRow,
   NoteInput,
-  InvisLabel,
+  Label,
   Status
 } from "./";
 import { useNote } from "../hooks";
 
-export const Note = ({ placeholder }) => {
+export const Note = ({ label }) => {
   // Refactor this into an object
   // Thinking that I don't really need the hook since the logic isn't shared
   // But it is nice that its in a separate file
@@ -43,9 +43,9 @@ export const Note = ({ placeholder }) => {
 
   return (
     <>
-      <InvisLabel htmlFor="note-input">
-        Note:
-      </InvisLabel>
+      <Label htmlFor="note-input">
+        {label}
+      </Label>
 
       <NoteInput
         id="note-input"
@@ -53,7 +53,6 @@ export const Note = ({ placeholder }) => {
         onChange={updateNote}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        placeholder={placeholder}
         isDisplayed={isDisplayed}
       />
 
