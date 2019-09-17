@@ -21,7 +21,7 @@ export default () => {
         >
           <title>Jot</title>
           <meta name="Description" content="Jot down little notes to yourself" />
-          <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Satisfy|Roboto:300,400,500,700&display=swap" rel="stylesheet" />
         </Helmet>
 
         <GlobalStyle />
@@ -29,6 +29,21 @@ export default () => {
         <Container>
           <Header
             name="Jot"
+            infoHeader="What is Jot..."
+            contentList={[
+              {
+                type: "info",
+                body: "Its pretty simple. Jot is a place to quickly write down a note, a thought, an idea. Just open up the site and get it down quickly"
+              },
+              {
+                type: "info",
+                body: "No account needed, just get going"
+              },
+              {
+                type: "warning",
+                body: "Don't enter import information that you want kept a secret. Since there is no account, everything gets saved to your browser"
+              }
+            ]}
           />
 
           <Main>

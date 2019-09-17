@@ -8,4 +8,6 @@ export { Container } from "./Container";
 export { Button, ButtonOutline } from "./Button";
 export { ButtonRow } from "./ButtonRow";
 export { Status } from "./Status";
+export { InfoButton } from "./InfoButton/";
+export { IconButton } from "./IconButton";
 export { Footer } from "./Footer";

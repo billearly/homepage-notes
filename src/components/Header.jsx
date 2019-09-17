@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { InfoButton } from "./";
 
 const HeaderBar = styled.header`
   background-color: ${props => props.theme.colorBlueDark};
@@ -12,6 +13,10 @@ const HeaderBar = styled.header`
 `;
 
 const HeaderContent = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin: 0 auto;
   max-width: 20rem;
   padding: ${props => props.theme.padding} ${props => props.theme.paddingX2};
@@ -22,9 +27,18 @@ const HeaderContent = styled.div`
   }
 `;
 
-export const Header = ({ name }) =>
+export const Header = ({
+  name,
+  infoHeader,
+  contentList
+}) =>
   <HeaderBar>
     <HeaderContent>
       <p>{name}</p>
+
+      <InfoButton
+        infoHeader={infoHeader}
+        contentList={contentList}
+      />
     </HeaderContent>
   </HeaderBar>
