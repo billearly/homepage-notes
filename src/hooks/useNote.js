@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
+import { getNote, saveNote } from "../persistence/localStorage";
 
 export const useNote = () => {
-  const STORAGE_KEY = "NOTE";
-
   const [inBrowser, setInBrowser] = useState(false);
-  const [note, setNote] = useState("");
-  const [storedNote, setStoredNote] = useState("");
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [storedBody, setStoredBody] = useState("");
   const [isSaved, setSaved] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -13,41 +13,57 @@ export const useNote = () => {
   useEffect(() => {
     setInBrowser(true);
 
-    const storedValue = localStorage.getItem(STORAGE_KEY) || "";
-    setNote(storedValue);
-    setStoredNote(storedValue);
+    const initialState = getNote();
+
+    setTitle(initialState.title);
+    setBody(initialState.body);
+    setStoredBody(initialState.body);
   }, []);
 
-  // Note comparison
+  // Body comparison
   useEffect(() => {
-    setSaved(note === storedNote);
-  }, [note, storedNote]);
+    setSaved(body === storedBody);
+  }, [body, storedBody]);
 
-  const updateNote = e => {
-    setNote(e.target.value);
+  const updateBody = e => {
+    setBody(e.target.value);
   };
 
-  const saveNote = () => {
-    if (note.length > process.env.GATSBY_MAX_LENGTH) {
+  const updateTitle = e => {
+    setTitle(e.target.value);
+  }
+
+  const saveBody = () => {
+    if (body.length > process.env.GATSBY_MAX_LENGTH) {
       return;
     }
 
     if (inBrowser) {
-      localStorage.setItem(STORAGE_KEY, note);
+      saveNote({ title, body });
     }
 
-    setStoredNote(note);
+    setStoredBody(body);
   }
 
-  const revertNote = () => {
-    setNote(storedNote);
+  const saveTitle = () => {
+    if (inBrowser) {
+      // When we save the title, don't also update the body in case its over the limit
+      saveNote({ title, body: storedBody });
+    }
+  }
+
+  const revertBody = () => {
+    setBody(storedBody);
   }
 
   return [
-    note,
-    updateNote,
-    saveNote,
-    revertNote,
+    body,
+    title,
+    updateBody,
+    updateTitle,
+    saveBody,
+    saveTitle,
+    revertBody,
     isSaved,
     isEditing,
     setIsEditing

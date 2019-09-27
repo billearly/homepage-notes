@@ -3,21 +3,28 @@ import {
   Button,
   ButtonOutline,
   ButtonRow,
+  NoteTitle,
   NoteInput,
   Label,
   Status
 } from "./";
 import { useNote } from "../hooks";
 
-export const Note = ({ label }) => {
+export const Note = ({
+  titleLabel,
+  inputLabel
+}) => {
   // Refactor this into an object
   // Thinking that I don't really need the hook since the logic isn't shared
   // But it is nice that its in a separate file
   const [
-    note,
-    updateNote,
-    saveNote,
-    revertNote,
+    body,
+    title,
+    updateBody,
+    updateTitle,
+    saveBody,
+    saveTitle,
+    revertBody,
     isSaved,
     isEditing,
     setIsEditing
@@ -38,19 +45,33 @@ export const Note = ({ label }) => {
   }
 
   const getFillPercentage = () => {
-    return note.length / process.env.GATSBY_MAX_LENGTH * 100;
+    return body.length / process.env.GATSBY_MAX_LENGTH * 100;
   }
 
   return (
     <>
+      {/* These ids need an index when there are multiple notes */}
+      <Label htmlFor="title-input">
+        {titleLabel}
+      </Label>
+
+      <NoteTitle
+        id="title-input"
+        placeholder="Add a title..."
+        value={title}
+        onChange={updateTitle}
+        onBlur={saveTitle}
+        isDisplayed={isDisplayed}
+      />
+
       <Label htmlFor="note-input">
-        {label}
+        {inputLabel}
       </Label>
 
       <NoteInput
         id="note-input"
-        value={note}
-        onChange={updateNote}
+        value={body}
+        onChange={updateBody}
         onFocus={handleFocus}
         onBlur={handleBlur}
         isDisplayed={isDisplayed}
@@ -61,8 +82,8 @@ export const Note = ({ label }) => {
           <Status percentage={getFillPercentage()} />
 
           <ButtonRow>
-            <ButtonOutline onClick={revertNote}>Cancel</ButtonOutline>
-            <Button onClick={saveNote}>Save</Button>
+            <ButtonOutline onClick={revertBody}>Cancel</ButtonOutline>
+            <Button onClick={saveBody}>Save</Button>
           </ButtonRow>
         </>
       }

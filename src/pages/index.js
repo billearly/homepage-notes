@@ -48,7 +48,8 @@ export default () => {
 
           <Main>
             <Note
-              label="Jot down a note..."
+              titleLabel="Title"
+              inputLabel="Note"
             />
           </Main>
 

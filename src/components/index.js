@@ -1,5 +1,6 @@
 export { GlobalStyle } from "./GlobalStyle";
 export { Header } from "./Header";
+export { NoteTitle } from "./NoteTitle";
 export { NoteInput } from "./NoteInput";
 export { Note } from "./Note";
 export { Label } from "./Label";
