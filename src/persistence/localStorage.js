@@ -2,17 +2,22 @@ const STORAGE_KEY = "NOTE";
 
 export const getNote = () => {
   if (localStorage) {
+    let note;
     const storedValue = localStorage.getItem(STORAGE_KEY);
 
-    let note = storedValue
-      ? JSON.parse(storedValue)
-      : { title: "", body: "" };
-
-    // Backwards compatability for anyone with the old storage object
-    if (typeof note === "string") {
+    if (!storedValue) {
       note = {
         title: "",
-        body: note
+        body: ""
+      }
+    } else {
+      try {
+        note = JSON.parse(storedValue);
+      } catch {
+        note = {
+          title: "",
+          body: storedValue
+        }
       }
     }
 
