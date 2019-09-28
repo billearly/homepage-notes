@@ -19,7 +19,7 @@ export default () => {
             lang: "en"
           }}
         >
-          <title>Jot</title>
+          <title>Jote</title>
           <meta name="Description" content="Jot down little notes to yourself" />
           <link href="https://fonts.googleapis.com/css?family=Satisfy|Roboto:300,400,500,700&display=swap" rel="stylesheet" />
         </Helmet>
@@ -28,12 +28,12 @@ export default () => {
 
         <Container>
           <Header
-            name="Jot"
-            infoHeader="What is Jot..."
+            name="Jote"
+            infoHeader="What is Jote..."
             contentList={[
               {
                 type: "info",
-                body: "Its pretty simple. Jot is a place to quickly write down a note, a thought, an idea. Just open up the site and get it down quickly"
+                body: "Its pretty simple. Jote is a place to quickly write down a note, a thought, an idea. Just open up the site and get it down quickly"
               },
               {
                 type: "info",
