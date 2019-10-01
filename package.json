@@ -15,9 +15,13 @@
   "dependencies": {
     "@material-ui/core": "^4.4.2",
     "babel-plugin-styled-components": "^1.10.6",
+    "classnames": "^2.2.6",
     "gatsby": "^2.15.5",
     "gatsby-plugin-react-helmet": "^3.1.6",
+    "gatsby-plugin-sass": "^2.1.17",
     "gatsby-plugin-styled-components": "^3.1.4",
+    "gatsby-plugin-typescript": "^2.1.11",
+    "node-sass": "^4.12.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-feather": "^2.0.3",
@@ -25,6 +29,10 @@
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
+    "@types/node": "^12.7.8",
+    "@types/react": "^16.9.3",
+    "@types/react-dom": "^16.9.1",
+    "@types/styled-components": "^4.1.19",
     "prettier": "^1.18.2"
   }
 }

@@ -1,0 +1,24 @@
+.notetitle {
+  opacity: 0;
+  padding: 0.75rem;
+  transition: opacity 1s;
+  width: 100%;
+
+  &--displayed {
+    opacity: 1;
+  }
+
+  &__input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid;
+    border-bottom-color: transparent;
+    font-size: 1rem;
+    width: 100%;
+
+    &:focus {
+      border-bottom-color: black;
+      outline: none;
+    }
+  }
+}

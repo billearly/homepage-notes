@@ -1,6 +1,6 @@
 export { GlobalStyle } from "./GlobalStyle";
 export { Header } from "./Header";
-export { NoteTitle } from "./NoteTitle";
+export { NoteTitle } from "./NoteTitle.tsx";
 export { NoteInput } from "./NoteInput";
 export { Note } from "./Note";
 export { Label } from "./Label";
@@ -8,7 +8,7 @@ export { Main } from "./Main";
 export { Container } from "./Container";
 export { Button, ButtonOutline } from "./Button";
 export { ButtonRow } from "./ButtonRow";
-export { Status } from "./Status";
+export { Status } from "./Status.tsx";
 export { InfoButton } from "./InfoButton/";
 export { IconButton } from "./IconButton";
 export { Footer } from "./Footer";
