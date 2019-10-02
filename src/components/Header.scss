@@ -1,0 +1,26 @@
+@import "assets/variables";
+
+.header {
+  background-color: $color-blue-dark;
+  color: white;
+  font-family: 'Satisfy', cursive;
+
+  p {
+    font-size: 2rem;
+  }
+
+  &__items {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 20rem;
+    padding: $padding $padding-x2;
+  
+    @media screen and (max-width: $breakpoint-small) {
+      margin: none;
+      max-width: none;
+    }
+  }
+}

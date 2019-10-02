@@ -1,0 +1,8 @@
+@import "assets/variables";
+
+.buttonrow {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: $padding-x2;
+  width: 100%;
+}

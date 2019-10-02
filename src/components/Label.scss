@@ -1,6 +1,6 @@
-import styled from "styled-components";
+@import "assets/variables";
 
-export const Label = styled.label`
+.invislabel {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -9,4 +9,4 @@ export const Label = styled.label`
   padding: 0;
   position: absolute;
   width: 1px;
-`;
+}

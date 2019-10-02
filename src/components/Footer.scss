@@ -1,0 +1,33 @@
+@import "assets/variables";
+
+.footer {
+  background-color: $color-blue-dark;
+  bottom: 0;
+  color: white;
+  font-size: 0.75rem;
+  position: absolute;
+  width: 100%;
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__items {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 20rem;
+    padding: $padding $padding-x2;
+  
+    @media screen and (max-width: $breakpoint-small) {
+      margin: none;
+      max-width: none;
+    }
+  }
+}

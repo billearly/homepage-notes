@@ -23,7 +23,8 @@ export const NoteTitle: React.FC<INoteTitleProps> = ({
 
   return (
     <div className={noteTitleClasses}>
-      <input className="notetitle__input"
+      <input
+        className="notetitle__input"
         placeholder={placeholder}
         value={value}
         onChange={onChange}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   Button,
-  ButtonOutline,
+  ButtonType,
   ButtonRow,
   NoteTitle,
   NoteInput,
@@ -82,8 +82,18 @@ export const Note = ({
           <Status percentage={getFillPercentage()} />
 
           <ButtonRow>
-            <ButtonOutline onClick={revertBody}>Cancel</ButtonOutline>
-            <Button onClick={saveBody}>Save</Button>
+            <Button
+              type={ButtonType.Outline}
+              onClick={revertBody}
+            >
+              Cancel
+            </Button>
+
+            <Button
+              onClick={saveBody}
+            >
+              Save
+            </Button>
           </ButtonRow>
         </>
       }

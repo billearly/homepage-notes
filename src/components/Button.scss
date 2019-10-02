@@ -1,0 +1,18 @@
+@import "assets/variables";
+
+.cta {
+  background-color: $color-blue-dark;
+  border: $border;
+  border-color: $color-blue-dark;
+  border-radius: $border-radius;
+  color: $color-gray-light;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: $padding-x2;
+  padding: $padding $padding-x2;
+
+  &--outline {
+    background-color: transparent;
+    color: $color-blue-dark;
+  }
+}

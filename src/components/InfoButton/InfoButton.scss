@@ -1,0 +1,32 @@
+@import "../assets/variables";
+
+.info-button {
+  &__content {
+    padding: $padding-x2;
+    width: 20rem;
+
+    &__header {
+      font-family: 'Satisfy', cursive;
+      font-weight: normal;
+      margin: 0;
+      padding-bottom: $padding-x2;
+    }
+
+    &__info {
+      padding-bottom: $padding-x2;
+
+      &--warning {
+        border: $border;
+        border-radius: $border-radius;
+        color: $color-red;
+        padding: $padding;
+      }
+    }
+
+    &__button-wrapper {
+      position: absolute;
+      right: $padding-x2;
+      top: $padding-x2;
+    }
+  }
+}

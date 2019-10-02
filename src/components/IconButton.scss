@@ -1,0 +1,13 @@
+@import "assets/variables";
+
+.iconbutton {
+  background-color: transparent;
+  border: none;
+  color: black;
+  height: 24px;
+  padding: 0;
+
+  &--white {
+    color: white;
+  }
+}
