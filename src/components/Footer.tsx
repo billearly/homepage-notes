@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Footer.scss";
 
 interface IFooterProps {
-  link: string
-  linkText: string
+  link: string;
+  linkText: string;
 }
 
 export const Footer: React.FC<IFooterProps> = ({

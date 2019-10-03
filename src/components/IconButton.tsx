@@ -10,8 +10,8 @@ export enum IconButtonColor {
 }
 
 interface IIconButtonProps {
-  color?: IconButtonColor
-  onClick: (e: React.MouseEvent) => void
+  color?: IconButtonColor;
+  onClick: (e: React.MouseEvent) => void;
 }
 
 export const IconButton: React.FC<IIconButtonProps> = ({

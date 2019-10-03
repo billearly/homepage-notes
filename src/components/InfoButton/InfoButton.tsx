@@ -5,22 +5,21 @@ import { IconButton, IconButtonColor } from "../";
 import "./InfoButton.scss";
 
 interface IInfoButtonProps {
-  infoHeader: string
-  contentList: Array<IContentListItem>
+  infoHeader: string;
+  contentList: Array<IContentListItem>;
 }
 
 // also need to wrap up:
-// saving doesnt work WHOOPS
+// interface members should have semis
 // GlobalStyle
-// hooks
 // pages?
 // rename a bunch of confusing stuff
 // move everything into folders
 // remove anything having to do with styled-components
 
 export interface IContentListItem {
-  type: ContentType
-  body: string
+  type: ContentType;
+  body: string;
 }
 
 export enum ContentType {

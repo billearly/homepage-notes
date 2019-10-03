@@ -14,10 +14,9 @@ export const Note = ({
   titleLabel,
   inputLabel
 }) => {
-  // Refactor this into an object
   // Thinking that I don't really need the hook since the logic isn't shared
   // But it is nice that its in a separate file
-  const [
+  const {
     body,
     title,
     updateBody,
@@ -27,8 +26,9 @@ export const Note = ({
     revertBody,
     isSaved,
     isEditing,
-    setIsEditing
-  ] = useNote();
+    setIsEditing,
+    maxLength
+  } = useNote();
 
   const [isDisplayed, setIsDisplayed] = useState(false);
 
@@ -44,8 +44,8 @@ export const Note = ({
     setIsEditing(false);
   }
 
-  const getFillPercentage = () => {
-    return body.length / process.env.GATSBY_MAX_LENGTH * 100;
+  const getFillPercentage = (): number => {
+    return body.length / maxLength * 100;
   }
 
   return (

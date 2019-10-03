@@ -1,7 +1,17 @@
 import React from "react";
 import "./Label.scss";
 
-export const Label: React.FC = ({ children }) =>
-  <label className="invislabel">
+interface ILabelProps {
+  htmlFor: string;
+}
+
+export const Label: React.FC<ILabelProps> = ({
+  children,
+  htmlFor
+}) =>
+  <label
+    className="invislabel"
+    htmlFor={htmlFor}
+  >
     {children}
   </label>

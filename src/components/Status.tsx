@@ -3,7 +3,7 @@ import classnames from "classnames";
 import "./Status.scss";
 
 interface IStatusProps {
-  percentage: number
+  percentage: number;
 }
 
 export const Status: React.FC<IStatusProps> = ({ percentage }) => {

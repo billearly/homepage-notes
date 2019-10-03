@@ -1,11 +1,11 @@
 import React from "react";
 import "./ErrorMessage.scss";
 
-export interface IErrorMessageProps {
-  header: string
-  subHeader: string
-  message: string
-  errorCode: number
+interface IErrorMessageProps {
+  header: string;
+  subHeader: string;
+  message: string;
+  errorCode: number;
 }
 
 export const ErrorMessage: React.FC<IErrorMessageProps> = ({

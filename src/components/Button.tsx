@@ -4,13 +4,12 @@ import "./Button.scss";
 
 export enum ButtonType {
   Unknown,
-  Default,
   Outline
 }
 
 interface IButtonProps {
-  type?: ButtonType
-  onClick: (e: React.MouseEvent) => void
+  type?: ButtonType;
+  onClick: (e: React.MouseEvent) => void;
 }
 
 export const Button: React.FC<IButtonProps> = ({

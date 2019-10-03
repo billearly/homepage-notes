@@ -1,8 +1,14 @@
-const STORAGE_KEY = "NOTE";
+const STORAGE_KEY: string = "NOTE";
 
-export const getNote = () => {
+interface Note {
+  title: string;
+  body: string;
+}
+
+export const getNote = (): Note => {
   if (localStorage) {
-    let note;
+    let note: Note;
+
     const storedValue = localStorage.getItem(STORAGE_KEY);
 
     if (!storedValue) {
@@ -25,7 +31,7 @@ export const getNote = () => {
   }
 };
 
-export const saveNote = (updatedNote) => {
+export const saveNote = (updatedNote: Note): void => {
   if (localStorage) {
     const note = JSON.stringify(updatedNote);
     localStorage.setItem(STORAGE_KEY, note);
