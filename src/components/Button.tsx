@@ -10,10 +10,12 @@ export enum ButtonType {
 
 interface IButtonProps {
   type?: ButtonType
+  onClick: (e: React.MouseEvent) => void
 }
 
 export const Button: React.FC<IButtonProps> = ({
   type,
+  onClick,
   children
 }) => {
   const classes = classnames("cta", {
@@ -21,7 +23,10 @@ export const Button: React.FC<IButtonProps> = ({
   });
 
   return (
-    <button className={classes}>
+    <button
+      className={classes}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
