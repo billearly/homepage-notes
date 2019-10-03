@@ -5,14 +5,15 @@ import {
   Note,
   Main,
   Footer,
-  Container
+  Container,
+  ContentType
 } from "../components";
 import { Helmet } from "react-helmet";
-import Layout from "../layouts";
+import { MainLayout } from "../layouts/index.ts";
 
 export default () => {
   return (
-    <Layout>
+    <MainLayout>
       <>
         <Helmet
           htmlAttributes={{
@@ -32,15 +33,15 @@ export default () => {
             infoHeader="What is Jote..."
             contentList={[
               {
-                type: "info",
+                type: ContentType.Info,
                 body: "Its pretty simple. Jote is a place to quickly write down a note, a thought, an idea. Just open up the site and get it down quickly"
               },
               {
-                type: "info",
+                type: ContentType.Info,
                 body: "No account needed, just get going"
               },
               {
-                type: "warning",
+                type: ContentType.Warning,
                 body: "Don't enter import information that you want kept a secret. Since there is no account, everything gets saved to your browser"
               }
             ]}
@@ -59,6 +60,6 @@ export default () => {
           />
         </Container>
       </>
-    </Layout>
+    </MainLayout>
   );
 };

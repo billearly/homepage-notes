@@ -1,0 +1,29 @@
+@import "../assets/variables";
+
+.error {
+  max-width: 30rem;
+  padding: $padding-x2;
+
+  &__header {
+    color: white;
+    font-family: 'Satisfy', sans-serif;
+    font-size: 3rem;
+    margin-bottom: $padding-x2;
+  }
+
+  &__message {
+    color: white;
+    margin: $padding-x2 0;
+
+    a {
+      color: white;
+    }
+  }
+
+  &__code {
+    border-top: $border;
+    color: white;
+    font-size: 0.75rem;
+    padding-top: $padding-x2;
+  }
+}

@@ -1,0 +1,10 @@
+@import "../components/assets/variables";
+
+.full-screen {
+  align-items: center;
+  background-color: $color-blue-dark;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+}

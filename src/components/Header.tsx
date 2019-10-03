@@ -1,11 +1,11 @@
 import React from "react";
-import { InfoButton, ContentType } from "./";
+import { InfoButton, IContentListItem } from "./";
 import "./Header.scss";
 
 interface IHeaderProps {
   name: string
   infoHeader: string
-  contentList: Array<string>
+  contentList: Array<IContentListItem>
 }
 
 export const Header: React.FC<IHeaderProps> = ({
