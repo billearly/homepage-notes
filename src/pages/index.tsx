@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  GlobalStyle,
   Header,
   Note,
   Main,
@@ -9,7 +8,7 @@ import {
   ContentType
 } from "../components";
 import { Helmet } from "react-helmet";
-import { MainLayout } from "../layouts/index.ts";
+import { MainLayout } from "../layouts";
 
 export default () => {
   return (
@@ -24,8 +23,6 @@ export default () => {
           <meta name="Description" content="Jot down little notes to yourself" />
           <link href="https://fonts.googleapis.com/css?family=Satisfy|Roboto:300,400,500,700&display=swap" rel="stylesheet" />
         </Helmet>
-
-        <GlobalStyle />
 
         <Container>
           <Header

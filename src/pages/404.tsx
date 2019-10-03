@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { GlobalStyle, ErrorMessage } from "../components";
-import { FullScreenLayout } from "../layouts/index.ts";
+import { ErrorMessage } from "../components";
+import { FullScreenLayout } from "../layouts";
 
 export default () => {
   return (
@@ -15,7 +15,6 @@ export default () => {
         <meta name="Description" content="Jot down little notes to yourself" />
         <link href="https://fonts.googleapis.com/css?family=Satisfy|Roboto:300,400,500,700&display=swap" rel="stylesheet" />
       </Helmet>
-      <GlobalStyle />
 
       <ErrorMessage
         header="Jot this down..."

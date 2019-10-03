@@ -10,9 +10,6 @@ interface IInfoButtonProps {
 }
 
 // also need to wrap up:
-// interface members should have semis
-// GlobalStyle
-// pages?
 // rename a bunch of confusing stuff
 // move everything into folders
 // remove anything having to do with styled-components
