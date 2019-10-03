@@ -12,7 +12,6 @@ interface IInfoButtonProps {
 // also need to wrap up:
 // rename a bunch of confusing stuff
 // move everything into folders
-// remove anything having to do with styled-components
 
 export interface IContentListItem {
   type: ContentType;
