@@ -1,5 +1,5 @@
 import React from "react";
-import { InfoButton, IContentListItem } from "./";
+import { InfoButton, IContentListItem } from "../";
 import "./Header.scss";
 
 interface IHeaderProps {

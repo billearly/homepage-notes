@@ -2,6 +2,7 @@
 
 Write little reminders to yourself 📃
 
-## Deploy
+Todo:
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-hello-world)
+- Rename a bunch of confusing stuff (Main, Container, InfoButton)
+- Consider moving Header and Footer into own folders, and have the 'Layout' be whatever Main and Container become

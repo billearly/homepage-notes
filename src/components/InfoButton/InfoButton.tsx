@@ -9,10 +9,6 @@ interface IInfoButtonProps {
   contentList: Array<IContentListItem>;
 }
 
-// also need to wrap up:
-// rename a bunch of confusing stuff
-// move everything into folders
-
 export interface IContentListItem {
   type: ContentType;
   body: string;

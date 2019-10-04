@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { NoteTitle } from "./NoteTitle";
+import { NoteInput } from "./NoteInput";
+import { Label } from "./Label";
 import {
   Button,
   ButtonType,
   ButtonRow,
-  NoteTitle,
-  NoteInput,
-  Label,
   Status
-} from "./";
-import { useNote } from "../hooks";
+} from "../";
+import { useNote } from "../../hooks";
 
 export const Note = ({
   titleLabel,

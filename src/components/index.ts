@@ -1,14 +1,8 @@
-export { Header } from "./Header";
-export { NoteTitle } from "./NoteTitle";
-export { NoteInput } from "./NoteInput";
+export { Header, Footer } from "./Layout";
 export { Note } from "./Note";
-export { Label } from "./Label";
 export { Main } from "./Main";
 export { Container } from "./Container";
-export { Button, ButtonType } from "./Button";
-export { ButtonRow } from "./ButtonRow";
+export { Button, ButtonType, IconButton, IconButtonColor, ButtonRow } from "./Button";
 export { Status } from "./Status";
 export * from "./InfoButton";
-export { IconButton, IconButtonColor } from "./IconButton";
-export { Footer } from "./Footer";
 export * from "./Error";
