@@ -1,10 +1,10 @@
 @import "../assets/variables";
 
 .status {
-  background-color: #c9c9c9;
-  border-radius: 0.2rem;
+  background-color: $color-gray-medium;
+  border-radius: $border-radius;
   height: 0.3rem;
-  margin-top: 1.5rem;
+  margin-top: $padding-x2;
   overflow: hidden;
   width: 100%;
 
@@ -12,15 +12,15 @@
     background-color: $color-blue-dark;
     height: 100%;
     max-width: 100%;
-    transition: width 0.2s;
+    transition: width $animation-speed-fast;
     width: 50%;
 
     &--warning {
-      background-color: #f9d28b;
+      background-color: $color-orange;
     }
 
     &--error {
-      background-color: #cc5757;
+      background-color: $color-red;
     }
   }
 }
