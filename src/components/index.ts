@@ -1,7 +1,5 @@
 export { Header, Footer } from "./Layout";
 export { Note } from "./Note";
-export { Main } from "./Main";
-export { Container } from "./Container";
 export { Button, ButtonType, IconButton, IconButtonColor, ButtonRow } from "./Button";
 export { Status } from "./Status";
 export * from "./InfoButton";
