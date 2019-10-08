@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Drawer } from "@material-ui/core";
 import { Info, XCircle } from "react-feather";
 import { IconButton, IconButtonColor } from "../";
-import "./InfoButton.scss";
+import "./DrawerButton.scss";
 
 interface IInfoButtonProps {
   infoHeader: string;
