@@ -20,7 +20,7 @@ export enum ContentType {
   Warning
 }
 
-export const InfoButton: React.FC<IInfoButtonProps> = ({
+export const DrawerButton: React.FC<IInfoButtonProps> = ({
   infoHeader,
   contentList
 }) => {
@@ -36,12 +36,19 @@ export const InfoButton: React.FC<IInfoButtonProps> = ({
 
   const generateContent = (contentList: Array<IContentListItem>) => {
     if (contentList) {
-      return contentList.map(content => {
+      return contentList.map((content, i) => {
         const classes: string = content.type === ContentType.Warning
           ? "info-button__content__info--warning"
           : "info-button__content__info";
 
-        return <p className={classes}>{content.body}</p>
+        return (
+          <p
+            className={classes}
+            key={i}
+          >
+            {content.body}
+          </p>
+        );
       });
     }
   };
