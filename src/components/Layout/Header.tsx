@@ -1,5 +1,5 @@
 import React from "react";
-import { InfoButton, IContentListItem } from "../";
+import { DrawerButton, IContentListItem } from "../";
 import "./Header.scss";
 
 interface IHeaderProps {
@@ -17,7 +17,7 @@ export const Header: React.FC<IHeaderProps> = ({
     <div className="header__items">
       <p>{name}</p>
 
-      <InfoButton
+      <DrawerButton
         infoHeader={infoHeader}
         contentList={contentList}
       />
