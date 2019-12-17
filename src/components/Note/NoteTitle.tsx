@@ -1,5 +1,4 @@
 import React, { FormEvent, ChangeEvent } from "react";
-import classnames from "classnames";
 import "./NoteTitle.scss";
 
 interface INoteTitleProps {
@@ -7,8 +6,8 @@ interface INoteTitleProps {
   placeholder: string;
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onFocus: (e: ChangeEvent<HTMLInputElement>) => void;
   onBlur: (e: ChangeEvent<HTMLInputElement>) => void;
-  isDisplayed: boolean;
 }
 
 export const NoteTitle: React.FC<INoteTitleProps> = ({
@@ -16,21 +15,18 @@ export const NoteTitle: React.FC<INoteTitleProps> = ({
   placeholder,
   value,
   onChange,
-  onBlur,
-  isDisplayed
+  onFocus,
+  onBlur
 }) => {
-  const noteTitleClasses = classnames("notetitle", {
-    "notetitle--displayed": isDisplayed
-  });
-
   return (
-    <div className={noteTitleClasses}>
+    <div>
       <input
         className="notetitle__input"
         id={id}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        onFocus={onFocus}
         onBlur={onBlur}
       />
     </div>

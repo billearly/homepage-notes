@@ -1,39 +1,28 @@
-const STORAGE_KEY: string = "NOTE";
+import { Note, Notes } from "../models";
 
-interface Note {
-  title: string;
-  body: string;
+const NOTE_KEY_PREFIX: string = "NOTE_";
+
+export const getNotes = (): Notes => {
+  let notes: Notes = {};
+
+  if (localStorage) {
+    const allStoredKeys = Object.keys(localStorage);
+    const allNoteKeys = allStoredKeys.filter(key => key.startsWith(NOTE_KEY_PREFIX));
+
+    allNoteKeys.forEach(key => {
+      const value = localStorage.getItem(key);
+      notes[key] = JSON.parse(value);
+    });
+  }
+
+  return notes;
 }
 
-export const getNote = (): Note => {
+export const saveNote = (id: string, note: Note): boolean => {
   if (localStorage) {
-    let note: Note;
-
-    const storedValue = localStorage.getItem(STORAGE_KEY);
-
-    if (!storedValue) {
-      note = {
-        title: "",
-        body: ""
-      }
-    } else {
-      try {
-        note = JSON.parse(storedValue);
-      } catch {
-        note = {
-          title: "",
-          body: storedValue
-        }
-      }
-    }
-
-    return note;
+    localStorage.setItem(id, JSON.stringify(note));
+    return true;
   }
-};
 
-export const saveNote = (updatedNote: Note): void => {
-  if (localStorage) {
-    const note = JSON.stringify(updatedNote);
-    localStorage.setItem(STORAGE_KEY, note);
-  }
+  return false;
 };
