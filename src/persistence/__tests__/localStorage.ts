@@ -1,4 +1,4 @@
-import { getNote, saveNote } from "../localStorage";
+import { getNote, updateNote } from "../localStorage";
 
 const STORAGE_KEY = "NOTE";
 
@@ -40,7 +40,7 @@ describe("Local Storage", () => {
     });
 
     test("Should write a note to local storage", () => {
-      saveNote({
+      updateNote({
         title: "My Title",
         body: "this is the body"
       });

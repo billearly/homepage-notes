@@ -3,7 +3,7 @@
 .noteinput {
   border: none;
   border-radius: $border-radius;
-  box-shadow: 0 0.1rem 0.5rem 0.1rem #0000001f;
+  box-shadow: $box-shadow;
   color: $color-gray-dark;
   display: block;
   font-family: Arial, sans-serif;

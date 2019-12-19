@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import classnames from "classnames";
+import { cloneDeep } from "lodash";
 import { Note } from "./Note";
+import { CreateNoteButton } from "./CreateNoteButton";
 import { Notes } from "../../models";
-import { getNotes } from "../../persistence/localStorage";
+import { getNotes, createNote } from "../../persistence/localStorage";
 import "./NoteGrid.scss";
 
 export const NoteGrid: React.FC = () => {
@@ -31,9 +33,26 @@ export const NoteGrid: React.FC = () => {
       />
     );
 
+  const handleNoteCreation = () => {
+    const newNote = createNote();
+
+    if (!newNote) {
+      // Show an error
+    }
+
+    const updatedNotes: Notes = cloneDeep(notes);
+    updatedNotes[newNote.id] = newNote;
+
+    setNotes(updatedNotes);
+  }
+
   return (
     <div className={classes}>
       {generateNotes(notes)}
+
+      <CreateNoteButton onClick={handleNoteCreation}>
+        +
+      </CreateNoteButton>
     </div>
   );
 };

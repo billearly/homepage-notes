@@ -9,7 +9,7 @@ import {
   ButtonType,
   Status
 } from "../";
-import { saveNote } from "../../persistence/localStorage";
+import { updateNote } from "../../persistence/localStorage";
 
 interface INoteProps {
   id: string;
@@ -44,14 +44,15 @@ export const Note: React.FC<INoteProps> = ({
     setBody(e.target.value);
   }
 
-  const handleSave = (e: React.MouseEvent) => {
+  const handleUpdate = (e: React.MouseEvent) => {
     const updatedNote: NoteModel = {
+      id: note.id,
       creationDate: note.creationDate,
       title: title,
       body: body
     };
 
-    const isSuccess = saveNote(id, updatedNote);
+    const isSuccess = updateNote(id, updatedNote);
 
     if (isSuccess) {
       setIsSaved(true);
@@ -119,7 +120,7 @@ export const Note: React.FC<INoteProps> = ({
             </Button>
 
             <Button
-              onClick={handleSave}
+              onClick={handleUpdate}
             >
               Save
             </Button>

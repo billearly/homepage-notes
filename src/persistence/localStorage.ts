@@ -1,6 +1,7 @@
 import { Note, Notes } from "../models";
+import uuidv4 from "uuid/v4";
 
-const NOTE_KEY_PREFIX: string = "NOTE_";
+const NOTE_KEY_PREFIX: string = "NOTE";
 
 export const getNotes = (): Notes => {
   let notes: Notes = {};
@@ -18,7 +19,7 @@ export const getNotes = (): Notes => {
   return notes;
 }
 
-export const saveNote = (id: string, note: Note): boolean => {
+export const updateNote = (id: string, note: Note): boolean => {
   if (localStorage) {
     localStorage.setItem(id, JSON.stringify(note));
     return true;
@@ -26,3 +27,21 @@ export const saveNote = (id: string, note: Note): boolean => {
 
   return false;
 };
+
+// consider renaming this to createNote
+export const createNote = (): Note => {
+  if (localStorage) {
+    const guid: string = uuidv4();
+    const id = `${NOTE_KEY_PREFIX}_${guid}`;
+
+    const newNote: Note = {
+      id: id,
+      creationDate: Date.now(),
+      title: "",
+      body: ""
+    }
+
+    localStorage.setItem(id, JSON.stringify(newNote));
+    return newNote;
+  }
+}
