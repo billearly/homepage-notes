@@ -1,46 +1,77 @@
 import React, { useState, useEffect } from "react";
-import { NoteTitle } from "./NoteTitle";
-import { NoteInput } from "./NoteInput";
 import { Label } from "./Label";
+import { Note as NoteModel } from "../../models";
+import { NoteTitle } from "./NoteTitle"
+import { NoteInput } from "./NoteInput";
 import {
   Button,
-  ButtonType,
   ButtonRow,
+  ButtonType,
   Status
 } from "../";
-import { useNote } from "../../hooks";
+import { updateNote } from "../../persistence/localStorage";
 
-export const Note = ({
+interface INoteProps {
+  id: string;
+  note: NoteModel;
+  titleLabel: string;
+  inputLabel: string;
+}
+
+export const Note: React.FC<INoteProps> = ({
+  id,
+  note,
   titleLabel,
   inputLabel
 }) => {
-  // Thinking that I don't really need the hook since the logic isn't shared
-  // But it is nice that its in a separate file
-  const {
-    body,
-    title,
-    updateBody,
-    updateTitle,
-    saveBody,
-    saveTitle,
-    revertBody,
-    isSaved,
-    isEditing,
-    setIsEditing,
-    maxLength
-  } = useNote();
+  const maxLength = Number(process.env.GATSBY_MAX_LENGTH || 250);
 
-  const [isDisplayed, setIsDisplayed] = useState(false);
+  const [isSaved, setIsSaved] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [title, setTitle] = useState(note.title);
+  const [body, setBody] = useState(note.body);
 
   useEffect(() => {
-    setIsDisplayed(true);
-  }, []);
+    setIsSaved(title === note.title && body === note.body);
+  }, [title, body]);
+
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  }
+
+  const handleBodyChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setBody(e.target.value);
+  }
+
+  const handleUpdate = (e: React.MouseEvent) => {
+    const updatedNote: NoteModel = {
+      id: note.id,
+      creationDate: note.creationDate,
+      title: title,
+      body: body
+    };
+
+    const isSuccess = updateNote(id, updatedNote);
+
+    if (isSuccess) {
+      setIsSaved(true);
+    } else {
+      // revert and log error
+    }
+  }
 
   const handleFocus = () => {
     setIsEditing(true);
   }
 
   const handleBlur = () => {
+    setIsEditing(false);
+  }
+
+  const discardChanges = () => {
+    setTitle(note.title);
+    setBody(note.body);
     setIsEditing(false);
   }
 
@@ -59,9 +90,9 @@ export const Note = ({
         id="title-input"
         placeholder="Add a title..."
         value={title}
-        onChange={updateTitle}
-        onBlur={saveTitle}
-        isDisplayed={isDisplayed}
+        onChange={handleTitleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
       />
 
       <Label htmlFor="note-input">
@@ -71,10 +102,9 @@ export const Note = ({
       <NoteInput
         id="note-input"
         value={body}
-        onChange={updateBody}
+        onChange={handleBodyChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        isDisplayed={isDisplayed}
       />
 
       {(!isSaved || isEditing) &&
@@ -84,13 +114,13 @@ export const Note = ({
           <ButtonRow>
             <Button
               type={ButtonType.Outline}
-              onClick={revertBody}
+              onClick={discardChanges}
             >
               Cancel
             </Button>
 
             <Button
-              onClick={saveBody}
+              onClick={handleUpdate}
             >
               Save
             </Button>

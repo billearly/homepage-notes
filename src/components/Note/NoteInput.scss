@@ -3,23 +3,17 @@
 .noteinput {
   border: none;
   border-radius: $border-radius;
-  box-shadow: 0 0.1rem 0.5rem 0.1rem #0000001f;
+  box-shadow: $box-shadow;
   color: $color-gray-dark;
   display: block;
   font-family: Arial, sans-serif;
   font-size: 1rem;
   height: 12rem;
-  opacity: 0;
   padding: $padding;
   resize: none;
-  transition: opacity $animation-speed;
   width: 100%;
 
   ::placeholder {
     color: $color-gray-dark;
-  }
-
-  &--displayed {
-    opacity: 1;
   }
 }

@@ -1,0 +1,9 @@
+.note-grid {
+  display: grid;
+  opacity: 0;
+  transition: opacity 1s;
+
+  &--displayed {
+    opacity: 1;
+  }
+}
