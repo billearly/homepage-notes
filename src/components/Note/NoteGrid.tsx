@@ -4,7 +4,7 @@ import { cloneDeep } from "lodash";
 import { Note } from "./Note";
 import { CreateNoteButton } from "./CreateNoteButton";
 import { Notes } from "../../models";
-import { getNotes, createNote } from "../../persistence/localStorage";
+import { getNotes, createNote, convertNotes } from "../../persistence/localStorage";
 import "./NoteGrid.scss";
 
 export const NoteGrid: React.FC = () => {
@@ -15,6 +15,7 @@ export const NoteGrid: React.FC = () => {
 
   useEffect(() => {
     setIsDisplayed(true);
+    convertNotes();
     setNotes(getNotes());
   }, []);
 
