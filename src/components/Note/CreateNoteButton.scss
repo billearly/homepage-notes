@@ -1,0 +1,12 @@
+@import "../assets/variables";
+
+.create-note-button {
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: $box-shadow;
+  cursor: pointer;
+  font-size: 2rem;
+  height: 3rem;
+  width: 3rem;
+}

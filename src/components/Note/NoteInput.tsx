@@ -1,5 +1,4 @@
 import React, { ChangeEvent } from "react";
-import classnames from "classnames";
 import "./NoteInput.scss";
 
 interface INoteInputProps {
@@ -8,7 +7,6 @@ interface INoteInputProps {
   onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   onFocus: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   onBlur: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  isDisplayed: boolean;
 }
 
 export const NoteInput: React.FC<INoteInputProps> = ({
@@ -16,17 +14,12 @@ export const NoteInput: React.FC<INoteInputProps> = ({
   value,
   onChange,
   onFocus,
-  onBlur,
-  isDisplayed
+  onBlur
 }) => {
-  const classes = classnames("noteinput", {
-    "noteinput--displayed": isDisplayed
-  });
-
   return (
     <textarea
       id={id}
-      className={classes}
+      className="noteinput"
       value={value}
       onChange={onChange}
       onFocus={onFocus}
