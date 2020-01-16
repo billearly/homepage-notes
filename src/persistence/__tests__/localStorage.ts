@@ -1,7 +1,8 @@
 import {
   getNotes,
   updateNote,
-  createNote
+  createNote,
+  deleteNote
 } from "../localStorage";
 import { Note, Notes } from "../../models";
 
@@ -57,7 +58,7 @@ describe("Local Storage", () => {
           creationDate: 0,
           title: "Original Title",
           body: "Original body"
-        },
+        }
       }
 
       window.localStorage.setItem(NOTES_KEY, JSON.stringify(storedNotes));
@@ -99,6 +100,34 @@ describe("Local Storage", () => {
       expect(newNote.creationDate).toBe(storedNote.creationDate);
       expect(newNote.title).toBe(storedNote.title);
       expect(newNote.body).toBe(storedNote.body);
+    });
+  });
+
+  describe("deleteNote", () => {
+    test("Should remove a note with the specified id from local storage", () => {
+      const storedNotes: Notes = {
+        abc123: {
+          id: "abc123",
+          creationDate: 0,
+          title: "Title 1",
+          body: "Body 1"
+        },
+        efg456: {
+          id: "efg456",
+          creationDate: 1,
+          title: "Title 2",
+          body: "Body 2"
+        }
+      }
+
+      window.localStorage.setItem(NOTES_KEY, JSON.stringify(storedNotes));
+
+      const isSuccessful = deleteNote("abc123");
+      const updatedValue = window.localStorage.getItem(NOTES_KEY);
+      const updatedNotes: Notes = JSON.parse(updatedValue);
+
+      expect(isSuccessful).toBe(true);
+      expect(updatedNotes["abc123"]).toBe(undefined);
     });
   });
 });

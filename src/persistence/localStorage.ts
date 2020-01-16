@@ -42,6 +42,19 @@ export const createNote = (): Note => {
   // Handle lack of localStorage
 }
 
+export const deleteNote = (id: string): boolean => {
+  if (localStorage) {
+    let notes = getStoredNotes();
+    delete notes[id];
+
+    localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
+
+    return true;
+  }
+
+  return false;
+}
+
 export const convertNotes = () => {
   if (localStorage) {
     if (localStorage.getItem("NOTES")) {
