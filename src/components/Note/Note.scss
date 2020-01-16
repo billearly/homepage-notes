@@ -1,0 +1,11 @@
+@import "../assets/variables";
+
+.note {
+  position: relative;
+
+  .delete-button {
+    left: -2rem;
+    position: absolute;
+    top: 3rem;
+  }
+}

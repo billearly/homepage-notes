@@ -4,7 +4,12 @@ import { cloneDeep } from "lodash";
 import { Note } from "./Note";
 import { CreateNoteButton } from "./CreateNoteButton";
 import { Notes } from "../../models";
-import { getNotes, createNote, convertNotes } from "../../persistence/localStorage";
+import {
+  getNotes,
+  createNote,
+  deleteNote,
+  convertNotes
+} from "../../persistence/localStorage";
 import "./NoteGrid.scss";
 
 export const NoteGrid: React.FC = () => {
@@ -31,8 +36,22 @@ export const NoteGrid: React.FC = () => {
         note={notes[noteId]}
         titleLabel="Title Label"
         inputLabel="Input Label"
+        handleNoteDeletion={handleNoteDeletion}
       />
     );
+
+  const handleNoteDeletion = (id: string) => {
+    const isSuccessful = deleteNote(id);
+
+    if (!isSuccessful) {
+      // Show an error
+    }
+
+    const updatedNotes: Notes = cloneDeep(notes);
+    delete updatedNotes[id];
+
+    setNotes(updatedNotes);
+  }
 
   const handleNoteCreation = () => {
     const newNote = createNote();

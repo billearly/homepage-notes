@@ -57,7 +57,7 @@ export const DrawerButton: React.FC<IInfoButtonProps> = ({
     <>
       <IconButton
         onClick={openDrawer}
-        color={IconButtonColor.White}
+        iconColor={IconButtonColor.White}
       >
         <Info />
       </IconButton>
