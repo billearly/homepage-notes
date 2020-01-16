@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Label } from "./Label";
+import { Trash } from "react-feather";
+import { IconButton } from "../";
 import { Note as NoteModel } from "../../models";
 import { NoteTitle } from "./NoteTitle"
 import { NoteInput } from "./NoteInput";
@@ -10,19 +12,22 @@ import {
   Status
 } from "../";
 import { updateNote } from "../../persistence/localStorage";
+import "./Note.scss";
 
 interface INoteProps {
   id: string;
   note: NoteModel;
   titleLabel: string;
   inputLabel: string;
+  handleNoteDeletion: (id: string) => void;
 }
 
 export const Note: React.FC<INoteProps> = ({
   id,
   note,
   titleLabel,
-  inputLabel
+  inputLabel,
+  handleNoteDeletion
 }) => {
   const maxLength = Number(process.env.GATSBY_MAX_LENGTH || 250);
 
@@ -42,6 +47,10 @@ export const Note: React.FC<INoteProps> = ({
 
   const handleBodyChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setBody(e.target.value);
+  }
+
+  const handleDelete = (e: React.MouseEvent) => {
+    handleNoteDeletion(id);
   }
 
   const handleUpdate = (e: React.MouseEvent) => {
@@ -80,7 +89,7 @@ export const Note: React.FC<INoteProps> = ({
   }
 
   return (
-    <>
+    <div className="note">
       {/* These ids need an index when there are multiple notes */}
       <Label htmlFor="title-input">
         {titleLabel}
@@ -107,6 +116,13 @@ export const Note: React.FC<INoteProps> = ({
         onBlur={handleBlur}
       />
 
+      <IconButton
+        className="delete-button"
+        onClick={handleDelete}
+      >
+        <Trash />
+      </IconButton>
+
       {(!isSaved || isEditing) &&
         <>
           <Status percentage={getFillPercentage()} />
@@ -127,6 +143,6 @@ export const Note: React.FC<INoteProps> = ({
           </ButtonRow>
         </>
       }
-    </>
+    </div>
   );
 };

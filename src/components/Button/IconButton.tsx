@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ButtonHTMLAttributes } from "react";
 import classnames from "classnames";
 import "./IconButton.scss";
 
@@ -10,17 +10,18 @@ export enum IconButtonColor {
 }
 
 interface IIconButtonProps {
-  color?: IconButtonColor;
+  iconColor?: IconButtonColor;
   onClick: (e: React.MouseEvent) => void;
 }
 
-export const IconButton: React.FC<IIconButtonProps> = ({
-  color,
+export const IconButton: React.FC<IIconButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> = ({
+  iconColor,
   onClick,
-  children
+  children,
+  className
 }) => {
-  const classes = classnames("iconbutton", {
-    "iconbutton--white": color === IconButtonColor.White
+  const classes = classnames("iconbutton", className, {
+    "iconbutton--white": iconColor === IconButtonColor.White,
   });
 
   return (
