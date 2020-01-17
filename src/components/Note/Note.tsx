@@ -5,6 +5,7 @@ import { IconButton } from "../";
 import { Note as NoteModel } from "../../models";
 import { NoteTitle } from "./NoteTitle"
 import { NoteInput } from "./NoteInput";
+import { NoteTimestamp } from "./NoteTimestamp";
 import {
   Button,
   ButtonRow,
@@ -114,6 +115,10 @@ export const Note: React.FC<INoteProps> = ({
         onChange={handleBodyChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
+      />
+
+      <NoteTimestamp
+        timestamp={note.creationDate}
       />
 
       <IconButton
