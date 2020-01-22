@@ -3,6 +3,13 @@
 .note {
   position: relative;
 
+  &__input-wrapper {
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    overflow: hidden;
+    position: relative;
+  }
+
   .delete-button {
     left: -2rem;
     position: absolute;

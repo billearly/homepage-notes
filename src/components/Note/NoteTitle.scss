@@ -6,11 +6,15 @@
   border-bottom: $border;
   border-bottom-color: transparent;
   font-size: 1rem;
+  margin-bottom: $padding;
   padding: $padding;
+  padding-bottom: 0;
+  transition: padding-bottom $animation-speed-fast, border-bottom-color $animation-speed-fast;
   width: 100%;
 
   &:focus {
     border-bottom-color: black;
     outline: none;
+    padding-bottom: $padding;
   }
 }

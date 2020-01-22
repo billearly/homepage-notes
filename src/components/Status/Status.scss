@@ -2,10 +2,10 @@
 
 .status {
   background-color: $color-gray-medium;
-  border-radius: $border-radius;
-  height: 0.3rem;
-  margin-top: $padding-x2;
+  bottom: 0;
+  height: 0.2rem;
   overflow: hidden;
+  position: absolute;
   width: 100%;
 
   &__bar {
