@@ -109,13 +109,19 @@ export const Note: React.FC<INoteProps> = ({
         {inputLabel}
       </Label>
 
-      <NoteInput
-        id="note-input"
-        value={body}
-        onChange={handleBodyChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-      />
+      <div className="note__input-wrapper">
+        <NoteInput
+          id="note-input"
+          value={body}
+          onChange={handleBodyChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        />
+
+        {(!isSaved || isEditing) &&
+          <Status percentage={getFillPercentage()} />
+        }
+      </div>
 
       <NoteTimestamp
         timestamp={note.creationDate}
@@ -130,8 +136,6 @@ export const Note: React.FC<INoteProps> = ({
 
       {(!isSaved || isEditing) &&
         <>
-          <Status percentage={getFillPercentage()} />
-
           <ButtonRow>
             <Button
               type={ButtonType.Outline}
