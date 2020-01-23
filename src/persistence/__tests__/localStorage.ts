@@ -19,12 +19,14 @@ describe("Local Storage", () => {
         abc123: {
           id: "abc123",
           creationDate: 0,
+          updateDate: 0,
           title: "Note 1",
           body: "This is the first note"
         },
         efg456: {
           id: "efg456",
           creationDate: 1,
+          updateDate: 0,
           title: "Note 2",
           body: "This is the second note"
         }
@@ -56,6 +58,7 @@ describe("Local Storage", () => {
         abc123: {
           id: "abc123",
           creationDate: 0,
+          updateDate: 0,
           title: "Original Title",
           body: "Original body"
         }
@@ -65,9 +68,12 @@ describe("Local Storage", () => {
 
       // Update the note
       const id = "abc123";
+      const updateDate = Date.now();
+
       const note: Note = {
         id: id,
         creationDate: 0,
+        updateDate: updateDate,
         title: "Updated Title",
         body: "Updated body"
       };
@@ -80,6 +86,7 @@ describe("Local Storage", () => {
       expect(isSuccessful).toBe(true);
       expect(updatedNote.title).toBe("Updated Title");
       expect(updatedNote.body).toBe("Updated body");
+      expect(updatedNote.updateDate).toBe(updateDate);
     });
   });
 
@@ -109,12 +116,14 @@ describe("Local Storage", () => {
         abc123: {
           id: "abc123",
           creationDate: 0,
+          updateDate: 0,
           title: "Title 1",
           body: "Body 1"
         },
         efg456: {
           id: "efg456",
           creationDate: 1,
+          updateDate: 1,
           title: "Title 2",
           body: "Body 2"
         }

@@ -25,10 +25,12 @@ export const updateNote = (id: string, note: Note): boolean => {
 export const createNote = (): Note => {
   if (localStorage) {
     const guid: string = uuidv4();
+    const creationDate = Date.now();
 
     const newNote: Note = {
       id: guid,
-      creationDate: Date.now(),
+      creationDate: creationDate,
+      updateDate: creationDate,
       title: "",
       body: ""
     }
@@ -69,10 +71,12 @@ export const convertNotes = () => {
       .forEach(key => {
         const oldNote: Note = JSON.parse(localStorage.getItem(key));
         const newGuid = uuidv4();
+        const creationDate = Date.now();
 
         notes[newGuid] = {
           id: newGuid,
-          creationDate: Date.now(),
+          creationDate: creationDate,
+          updateDate: creationDate,
           title: oldNote.title,
           body: oldNote.body
         }
