@@ -7,11 +7,15 @@ interface INoteTimestampProps {
 
 export const NoteTimestamp: React.FC<INoteTimestampProps> = ({ timestamp }) => {
   const getTimestamp = (): string => {
+    if (!timestamp) {
+      return "";
+    }
+
     const locale = "en-US";
 
     const dateFormat = {
       year: "numeric",
-      month: "long",
+      month: "short",
       day: "numeric"
     };
 

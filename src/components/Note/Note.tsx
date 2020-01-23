@@ -37,6 +37,7 @@ export const Note: React.FC<INoteProps> = ({
 
   const [title, setTitle] = useState(note.title);
   const [body, setBody] = useState(note.body);
+  const [timestamp, setTimestamp] = useState(note.updateDate);
 
   useEffect(() => {
     setIsSaved(title === note.title && body === note.body);
@@ -55,9 +56,12 @@ export const Note: React.FC<INoteProps> = ({
   }
 
   const handleUpdate = (e: React.MouseEvent) => {
+    const updateDate = Date.now();
+
     const updatedNote: NoteModel = {
       id: note.id,
       creationDate: note.creationDate,
+      updateDate: updateDate,
       title: title,
       body: body
     };
@@ -66,6 +70,7 @@ export const Note: React.FC<INoteProps> = ({
 
     if (isSuccess) {
       setIsSaved(true);
+      setTimestamp(updateDate);
     } else {
       // revert and log error
     }
@@ -124,7 +129,7 @@ export const Note: React.FC<INoteProps> = ({
       </div>
 
       <NoteTimestamp
-        timestamp={note.creationDate}
+        timestamp={timestamp}
       />
 
       <IconButton
