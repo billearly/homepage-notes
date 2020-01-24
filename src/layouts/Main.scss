@@ -13,8 +13,8 @@
     width: 20rem;
   
     @media screen and (max-width: $breakpoint-small) {
-      padding: 5rem $padding-x2;
-      margin: none;
+      padding: 5rem $padding-x3;
+      margin: 0;
       width: 100%;
     }
   }
