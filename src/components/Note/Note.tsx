@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Label } from "./Label";
-import { Trash } from "react-feather";
-import { IconButton } from "../";
+import { ActionMenu } from "./ActionMenu";
+import { MenuItem } from "@material-ui/core";
 import { Note as NoteModel } from "../../models";
 import { NoteTitle } from "./NoteTitle"
 import { NoteInput } from "./NoteInput";
@@ -132,12 +132,11 @@ export const Note: React.FC<INoteProps> = ({
         timestamp={timestamp}
       />
 
-      <IconButton
-        className="delete-button"
-        onClick={handleDelete}
-      >
-        <Trash />
-      </IconButton>
+      <ActionMenu>
+        <MenuItem onClick={handleDelete}>Delete</MenuItem>
+        <MenuItem disabled={true}>Copy Title</MenuItem>
+        <MenuItem disabled={true}>Copy Body</MenuItem>
+      </ActionMenu>
 
       {(!isSaved || isEditing) &&
         <>
