@@ -3,6 +3,7 @@ import classnames from "classnames";
 import { cloneDeep } from "lodash";
 import { Note } from "./Note";
 import { CreateNoteButton } from "./CreateNoteButton";
+import { NoNotes } from "./NoNotes";
 import { Notes } from "../../models";
 import {
   getNotes,
@@ -66,13 +67,24 @@ export const NoteGrid: React.FC = () => {
     setNotes(updatedNotes);
   }
 
+  const getNotesSection = () => {
+    return (
+      <>
+        {generateNotes(notes)}
+
+        <CreateNoteButton onClick={handleNoteCreation}>
+          +
+        </CreateNoteButton>
+      </>
+    );
+  }
+
   return (
     <div className={classes}>
-      {generateNotes(notes)}
-
-      <CreateNoteButton onClick={handleNoteCreation}>
-        +
-      </CreateNoteButton>
+      {Object.keys(notes).length > 0
+        ? getNotesSection()
+        : <NoNotes handleCreateNote={handleNoteCreation} />
+      }
     </div>
   );
 };
