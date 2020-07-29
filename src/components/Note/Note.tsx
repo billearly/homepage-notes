@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Label } from "./Label";
 import { ActionMenu } from "./ActionMenu";
-import { MenuItem } from "@material-ui/core";
+import { MenuItem, Divider } from "@material-ui/core";
 import { Note as NoteModel } from "../../models";
 import { NoteTitle } from "./NoteTitle"
 import { NoteInput } from "./NoteInput";
@@ -54,6 +54,11 @@ export const Note: React.FC<INoteProps> = ({
   const handleDelete = (e: React.MouseEvent) => {
     handleNoteDeletion(id);
   }
+
+  const copyToClipboard = (textToCopy: string) =>
+    (e: React.MouseEvent) => {
+      navigator.clipboard.writeText(textToCopy);
+    }
 
   const handleUpdate = (e: React.MouseEvent) => {
     const updateDate = Date.now();
@@ -133,9 +138,11 @@ export const Note: React.FC<INoteProps> = ({
       />
 
       <ActionMenu>
+        <MenuItem onClick={copyToClipboard(title)}>Copy Title</MenuItem>
+        <Divider />
+        <MenuItem onClick={copyToClipboard(body)}>Copy Body</MenuItem>
+        <Divider />
         <MenuItem onClick={handleDelete}>Delete</MenuItem>
-        <MenuItem disabled={true}>Copy Title</MenuItem>
-        <MenuItem disabled={true}>Copy Body</MenuItem>
       </ActionMenu>
 
       {(!isSaved || isEditing) &&
