@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Label } from "./Label";
 import { ActionMenu } from "./ActionMenu";
-import { MenuItem, Divider } from "@material-ui/core";
+import {
+  MenuItem,
+  Divider,
+  Snackbar
+} from "@material-ui/core";
 import { Note as NoteModel } from "../../models";
 import { NoteTitle } from "./NoteTitle"
 import { NoteInput } from "./NoteInput";
@@ -39,6 +43,9 @@ export const Note: React.FC<INoteProps> = ({
   const [body, setBody] = useState(note.body);
   const [timestamp, setTimestamp] = useState(note.updateDate);
 
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState("");
+
   useEffect(() => {
     setIsSaved(title === note.title && body === note.body);
   }, [title, body]);
@@ -55,9 +62,17 @@ export const Note: React.FC<INoteProps> = ({
     handleNoteDeletion(id);
   }
 
+  const handleNotificationClose = () => {
+    setIsNotificationOpen(false);
+    setNotificationMessage("");
+  }
+
   const copyToClipboard = (textToCopy: string) =>
     (e: React.MouseEvent) => {
       navigator.clipboard.writeText(textToCopy);
+
+      setNotificationMessage("Copied to clipboard");
+      setIsNotificationOpen(true);
     }
 
   const handleUpdate = (e: React.MouseEvent) => {
@@ -76,6 +91,9 @@ export const Note: React.FC<INoteProps> = ({
     if (isSuccess) {
       setIsSaved(true);
       setTimestamp(updateDate);
+
+      setNotificationMessage("Note saved successfully");
+      setIsNotificationOpen(true);
     } else {
       // revert and log error
     }
@@ -100,69 +118,82 @@ export const Note: React.FC<INoteProps> = ({
   }
 
   return (
-    <div className="note">
-      {/* These ids need an index when there are multiple notes */}
-      <Label htmlFor="title-input">
-        {titleLabel}
-      </Label>
+    <>
+      <div className="note">
+        {/* These ids need an index when there are multiple notes */}
+        <Label htmlFor="title-input">
+          {titleLabel}
+        </Label>
 
-      <NoteTitle
-        id="title-input"
-        placeholder="Add a title..."
-        value={title}
-        onChange={handleTitleChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-      />
-
-      <Label htmlFor="note-input">
-        {inputLabel}
-      </Label>
-
-      <div className="note__input-wrapper">
-        <NoteInput
-          id="note-input"
-          value={body}
-          onChange={handleBodyChange}
+        <NoteTitle
+          id="title-input"
+          placeholder="Add a title..."
+          value={title}
+          onChange={handleTitleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
 
+        <Label htmlFor="note-input">
+          {inputLabel}
+        </Label>
+
+        <div className="note__input-wrapper">
+          <NoteInput
+            id="note-input"
+            value={body}
+            onChange={handleBodyChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          />
+
+          {(!isSaved || isEditing) &&
+            <Status percentage={getFillPercentage()} />
+          }
+        </div>
+
+        <NoteTimestamp
+          timestamp={timestamp}
+        />
+
+        <ActionMenu>
+          <MenuItem onClick={copyToClipboard(title)}>Copy Title</MenuItem>
+          <Divider />
+          <MenuItem onClick={copyToClipboard(body)}>Copy Body</MenuItem>
+          <Divider />
+          <MenuItem onClick={handleDelete}>Delete</MenuItem>
+        </ActionMenu>
+
         {(!isSaved || isEditing) &&
-          <Status percentage={getFillPercentage()} />
+          <>
+            <ButtonRow>
+              <Button
+                type={ButtonType.Outline}
+                onClick={discardChanges}
+              >
+                Cancel
+            </Button>
+
+              <Button
+                onClick={handleUpdate}
+              >
+                Save
+            </Button>
+            </ButtonRow>
+          </>
         }
       </div>
 
-      <NoteTimestamp
-        timestamp={timestamp}
+      <Snackbar
+        open={isNotificationOpen}
+        message={notificationMessage}
+        onClose={handleNotificationClose}
+        autoHideDuration={5000}
+        anchorOrigin={{
+          horizontal: "left",
+          vertical: "bottom"
+        }}
       />
-
-      <ActionMenu>
-        <MenuItem onClick={copyToClipboard(title)}>Copy Title</MenuItem>
-        <Divider />
-        <MenuItem onClick={copyToClipboard(body)}>Copy Body</MenuItem>
-        <Divider />
-        <MenuItem onClick={handleDelete}>Delete</MenuItem>
-      </ActionMenu>
-
-      {(!isSaved || isEditing) &&
-        <>
-          <ButtonRow>
-            <Button
-              type={ButtonType.Outline}
-              onClick={discardChanges}
-            >
-              Cancel
-            </Button>
-
-            <Button
-              onClick={handleUpdate}
-            >
-              Save
-            </Button>
-          </ButtonRow>
-        </>
-      }
-    </div>
+    </>
   );
 };
