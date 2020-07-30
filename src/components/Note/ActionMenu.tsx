@@ -24,6 +24,7 @@ export const ActionMenu: React.FC = ({ children }) => {
       </IconButton>
 
       <Menu
+        MenuListProps={{ disablePadding: true }}
         anchorEl={menuAnchor}
         open={Boolean(menuAnchor)}
         onClose={handleClose}
