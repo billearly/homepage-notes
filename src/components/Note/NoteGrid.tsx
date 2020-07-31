@@ -8,8 +8,7 @@ import { Notes } from "../../models";
 import {
   getNotes,
   createNote,
-  deleteNote,
-  convertNotes
+  deleteNote
 } from "../../persistence/localStorage";
 import "./NoteGrid.scss";
 
@@ -21,7 +20,6 @@ export const NoteGrid: React.FC = () => {
 
   useEffect(() => {
     setIsDisplayed(true);
-    convertNotes();
     setNotes(getNotes());
   }, []);
 

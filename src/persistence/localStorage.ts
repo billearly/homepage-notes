@@ -57,37 +57,6 @@ export const deleteNote = (id: string): boolean => {
   return false;
 }
 
-export const convertNotes = () => {
-  if (localStorage) {
-    if (localStorage.getItem("NOTES")) {
-      // Already exists, no need to convert
-      return;
-    }
-
-    const notes: Notes = {};
-
-    Object.keys(localStorage)
-      .filter(k => k === "NOTE" || k.startsWith("NOTE_"))
-      .forEach(key => {
-        const oldNote: Note = JSON.parse(localStorage.getItem(key));
-        const newGuid = uuidv4();
-        const creationDate = Date.now();
-
-        notes[newGuid] = {
-          id: newGuid,
-          creationDate: creationDate,
-          updateDate: creationDate,
-          title: oldNote.title,
-          body: oldNote.body
-        }
-
-        localStorage.removeItem(key);
-      });
-
-    localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
-  }
-}
-
 const getStoredNotes = (): Notes => {
   let notes: Notes = {};
 
